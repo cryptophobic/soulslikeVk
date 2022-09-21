@@ -1,6 +1,8 @@
 #pragma once
 
 #include "LveWindow.h"
+#include "LvePipeline.h"
+#include "utils/FileSystemHelper.h"
 
 namespace lve {
     class FirstApp {
@@ -12,5 +14,9 @@ namespace lve {
 
     private:
         LveWindow lveWindow{WIDTH, HEIGHT, "Murka window"};
+        LvePipeline lvePipeline{
+            FileSystemHelper::getPath("shaders/simpleShader.vert.spv"),
+            FileSystemHelper::getPath("shaders/simpleShader.frag.spv")
+        };
     };
 }
