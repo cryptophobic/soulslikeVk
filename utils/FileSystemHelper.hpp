@@ -1,9 +1,4 @@
-//
-// Created by dmitr on 21.09.2022.
-//
-
-#ifndef SOULSLIKEVK_FILESYSTEMHELPER_H
-#define SOULSLIKEVK_FILESYSTEMHELPER_H
+#pragma once
 
 #include <string>
 #include <filesystem>
@@ -21,6 +16,3 @@ public:
 private:
     static std::string root;
 };
-
-
-#endif //SOULSLIKEVK_FILESYSTEMHELPER_H

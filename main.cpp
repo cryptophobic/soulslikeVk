@@ -1,5 +1,5 @@
-#include "FirstApp.h"
-#include "utils/FileSystemHelper.h"
+#include "FirstApp.hpp"
+#include "utils/FileSystemHelper.hpp"
 
 // std
 #include <cstdlib>

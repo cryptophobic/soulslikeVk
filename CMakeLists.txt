@@ -11,5 +11,5 @@ endif (WIN32)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(soulslikeVk main.cpp LveWindow.h LveWindow.cpp FirstApp.h FirstApp.cpp LvePipeline.cpp LvePipeline.h utils/FileSystemHelper.cpp utils/FileSystemHelper.h)
+add_executable(soulslikeVk main.cpp LveWindow.hpp LveWindow.cpp FirstApp.hpp FirstApp.cpp LvePipeline.cpp LvePipeline.hpp utils/FileSystemHelper.cpp utils/FileSystemHelper.hpp LveDevice.cpp LveDevice.hpp)
 target_link_libraries(soulslikeVk ${ALL_LIBS})
