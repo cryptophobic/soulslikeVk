@@ -30,4 +30,15 @@ namespace lve {
             throw std::runtime_error("Failed to create window surface");
         }
     }
+
+    bool LveWindow::shouldClose() {
+        return glfwWindowShouldClose(window);
+    }
+
+    VkExtent2D LveWindow::getExtent() {
+        return {
+            static_cast<uint32_t>(width),
+            static_cast<uint32_t>(height)
+        };
+    }
 }
