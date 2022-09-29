@@ -46,6 +46,11 @@ namespace lve {
     }
 
     void FirstApp::createCommandBuffers() {
+        commandBuffers.resize(lveSwapChain.imageCount());
+        VkCommandBufferAllocateInfo allocInfo{};
+        allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
+        allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
+        allocInfo.commandPool = lveDevice.getCommandPool();
 
     }
 
