@@ -5,6 +5,7 @@
 #include "LvePipeline.hpp"
 #include "LveSwapChain.hpp"
 #include "LveDevice.hpp"
+#include "LveModel.hpp"
 
 // std
 #include <memory>
@@ -25,10 +26,17 @@ namespace lve {
         void run();
 
     private:
+        void loadModels();
         void createPipelineLayout();
         void createPipeline();
         void createCommandBuffers();
         void drawFrame();
+
+        void sierpinski(std::vector<LveModel::Vertex> &vertices,
+                        int depth,
+                        glm::vec2 left,
+                        glm::vec2 right,
+                        glm::vec2 top);
 
         LveWindow lveWindow{WIDTH, HEIGHT, "Murka window"};
         LveDevice lveDevice{lveWindow};
@@ -36,5 +44,6 @@ namespace lve {
         std::unique_ptr<LvePipeline> lvePipeline;
         VkPipelineLayout pipelineLayout;
         std::vector<VkCommandBuffer> commandBuffers;
+        std::unique_ptr<LveModel> lveModel;
     };
 }

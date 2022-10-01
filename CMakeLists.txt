@@ -46,7 +46,7 @@ add_executable(soulslikeVk ${soulslikeVkSrc})
 #add_executable(soulslikeVk
 #        main.cpp LveWindow.hpp LveWindow.cpp FirstApp.hpp FirstApp.cpp LvePipeline.cpp
 #        LvePipeline.hpp utils/FileSystemHelper.cpp utils/FileSystemHelper.hpp LveDevice.cpp
-#        LveDevice.hpp LveSwapChain.cpp LveSwapChain.hpp)
+#        LveDevice.hpp LveSwapChain.cpp LveSwapChain.hpp LveModel.cpp LveModel.hpp)
 target_link_libraries(soulslikeVk ${ALL_LIBS})
 
 add_shader(soulslikeVk shaders/SimpleShader.vert)
