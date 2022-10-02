@@ -18,26 +18,6 @@ namespace lve {
         vkDestroyPipelineLayout(lveDevice.device(), pipelineLayout, nullptr);
     }
 
-    void FirstApp::sierpinski(
-            std::vector<LveModel::Vertex> &vertices,
-            int depth,
-            glm::vec2 left,
-            glm::vec2 right,
-            glm::vec2 top) {
-        if (depth <= 0) {
-            vertices.push_back({top});
-            vertices.push_back({right});
-            vertices.push_back({left});
-        } else {
-            auto leftTop = 0.5f * (left + top);
-            auto rightTop = 0.5f * (right + top);
-            auto leftRight = 0.5f * (left + right);
-            sierpinski(vertices, depth - 1, left, leftRight, leftTop);
-            sierpinski(vertices, depth - 1, leftRight, right, rightTop);
-            sierpinski(vertices, depth - 1, leftTop, rightTop, top);
-        }
-    }
-
     void FirstApp::run() {
         while (!lveWindow.shouldClose()) {
             glfwPollEvents();
@@ -130,18 +110,12 @@ namespace lve {
     }
 
     void FirstApp::loadModels() {
-        std::vector<LveModel::Vertex> vertices{};
-        sierpinski(vertices, 7, {-0.9f, 0.9f}, {0.9f, 0.9f}, {0.0f, -0.9f});
+        std::vector<LveModel::Vertex> vertices {
+            {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+            {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
+            {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}
+        };
         lveModel = std::make_unique<LveModel>(lveDevice, vertices);
-
-
-
-//        std::vector<LveModel::Vertex> vertices {
-//            {{0.0, -0.5}},
-//            {{0.5, 0.5}},
-//            {{-0.5, 0.5}}
-//        };
-//        lveModel = std::make_unique<LveModel>(lveDevice, vertices);
     }
 
 }
