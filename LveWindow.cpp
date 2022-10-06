@@ -20,9 +20,11 @@ namespace lve {
     void LveWindow::initWindow() {
         glfwInit();
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
         window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
+        glfwSetWindowUserPointer(window, this);
+        glfwSetFramebufferSizeCallback(window, framebufferResizedCallback);
     }
 
     void LveWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR *surface) {
@@ -40,5 +42,20 @@ namespace lve {
             static_cast<uint32_t>(width),
             static_cast<uint32_t>(height)
         };
+    }
+
+    bool LveWindow::wasWindowResized() {
+        return framebufferResized;
+    }
+
+    void LveWindow::resetWindowResizeFlag() {
+        framebufferResized = false;
+    }
+
+    void LveWindow::framebufferResizedCallback(GLFWwindow *wwindow, int width, int height) {
+        auto lveWindow = reinterpret_cast<LveWindow *>(glfwGetWindowUserPointer(wwindow));
+        lveWindow->framebufferResized = true;
+        lveWindow->width = width;
+        lveWindow->height = height;
     }
 }
