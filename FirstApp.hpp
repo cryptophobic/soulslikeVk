@@ -5,7 +5,7 @@
 #include "LvePipeline.hpp"
 #include "LveSwapChain.hpp"
 #include "LveDevice.hpp"
-#include "LveModel.hpp"
+#include "LveGameObject.hpp"
 
 // std
 #include <memory>
@@ -14,8 +14,8 @@
 namespace lve {
     class FirstApp {
     public:
-        static constexpr int WIDTH = 2400;
-        static constexpr int HEIGHT = 1350;
+        static constexpr int WIDTH = 1024;
+        static constexpr int HEIGHT = 768;
 
         FirstApp();
         ~FirstApp();
@@ -26,7 +26,7 @@ namespace lve {
         void run();
 
     private:
-        void loadModels();
+        void loadGameObjects();
         void createPipelineLayout();
         void createPipeline();
         void createCommandBuffers();
@@ -34,6 +34,7 @@ namespace lve {
         void drawFrame();
         void recreateSwapChain();
         void recordCommandBuffer(int imageIndex);
+        void renderGameObjects(VkCommandBuffer commandBuffer);
 
         LveWindow lveWindow{WIDTH, HEIGHT, "Murka window"};
         LveDevice lveDevice{lveWindow};
@@ -41,6 +42,6 @@ namespace lve {
         std::unique_ptr<LvePipeline> lvePipeline;
         VkPipelineLayout pipelineLayout;
         std::vector<VkCommandBuffer> commandBuffers;
-        std::unique_ptr<LveModel> lveModel;
+        std::vector<LveGameObject> gameObjects;
     };
 }
