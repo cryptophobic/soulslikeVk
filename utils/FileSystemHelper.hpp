@@ -10,7 +10,7 @@ class FileSystemHelper
 {
 
 public:
-    static std::string getPath(const std::string& path);
+    static std::string getPath(const std::string &path);
     static void setApplicationPath(std::string path);
 
 private:

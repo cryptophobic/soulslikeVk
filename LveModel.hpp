@@ -23,7 +23,7 @@ namespace lve {
             static std::vector<VkVertexInputAttributeDescription> getAttributeDescriptions();
         };
 
-        LveModel(LveDevice& device, const std::vector<Vertex> &vertices);
+        LveModel(LveDevice &device, const std::vector<Vertex> &vertices);
         ~LveModel();
 
         LveModel(const LveModel&) = delete;
@@ -35,7 +35,7 @@ namespace lve {
     private:
         void createVertexBuffers(const std::vector<Vertex> &vertices);
 
-        LveDevice& lveDevice;
+        LveDevice &lveDevice;
         VkBuffer vertexBuffer;
         VkDeviceMemory vertexBufferMemory;
         uint32_t vertexCount;

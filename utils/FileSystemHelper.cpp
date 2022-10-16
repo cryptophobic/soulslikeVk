@@ -3,7 +3,7 @@
 
 std::string FileSystemHelper::root;
 
-std::string FileSystemHelper::getPath(const std::string& path) {
+std::string FileSystemHelper::getPath(const std::string &path) {
     return root + std::string("/") + path;
 }
 

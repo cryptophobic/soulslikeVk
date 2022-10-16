@@ -131,7 +131,7 @@ namespace lve {
         }
     }
 
-    void LvePipeline::defaultPipelineConfigInfo(PipelineConfigInfo& configInfo) {
+    void LvePipeline::defaultPipelineConfigInfo(PipelineConfigInfo &configInfo) {
 
         configInfo.inputAssemblyInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
         configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;

@@ -2,10 +2,9 @@
 
 #include "utils/FileSystemHelper.hpp"
 #include "LveWindow.hpp"
-#include "LvePipeline.hpp"
-#include "LveSwapChain.hpp"
 #include "LveDevice.hpp"
 #include "LveGameObject.hpp"
+#include "LveRenderer.hpp"
 
 // std
 #include <memory>
@@ -27,21 +26,11 @@ namespace lve {
 
     private:
         void loadGameObjects();
-        void createPipelineLayout();
-        void createPipeline();
-        void createCommandBuffers();
-        void freeCommandBuffers();
-        void drawFrame();
-        void recreateSwapChain();
-        void recordCommandBuffer(int imageIndex);
-        void renderGameObjects(VkCommandBuffer commandBuffer);
 
         LveWindow lveWindow{WIDTH, HEIGHT, "Murka window"};
         LveDevice lveDevice{lveWindow};
-        std::unique_ptr<LveSwapChain> lveSwapChain;
-        std::unique_ptr<LvePipeline> lvePipeline;
-        VkPipelineLayout pipelineLayout;
-        std::vector<VkCommandBuffer> commandBuffers;
+        LveRenderer lveRenderer{lveWindow, lveDevice};
+
         std::vector<LveGameObject> gameObjects;
     };
 }

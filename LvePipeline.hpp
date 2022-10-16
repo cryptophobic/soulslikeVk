@@ -10,7 +10,7 @@ namespace lve {
 
     struct PipelineConfigInfo {
         //PipelineConfigInfo(const PipelineConfigInfo&) = delete;
-        PipelineConfigInfo& operator=(const PipelineConfigInfo&) = delete;
+        PipelineConfigInfo &operator=(const PipelineConfigInfo&) = delete;
 
         VkPipelineViewportStateCreateInfo viewportInfo;
         VkPipelineInputAssemblyStateCreateInfo inputAssemblyInfo;
@@ -30,27 +30,27 @@ namespace lve {
     public:
         LvePipeline(
                 LveDevice &device,
-                const std::string& vertFilePath,
-                const std::string& fragFilePath,
-                const PipelineConfigInfo& configInfo);
+                const std::string &vertFilePath,
+                const std::string &fragFilePath,
+                const PipelineConfigInfo &configInfo);
         ~LvePipeline();
 
         LvePipeline(const LvePipeline&) = delete;
-        LvePipeline& operator=(const LvePipeline&) = delete;
+        LvePipeline &operator=(const LvePipeline&) = delete;
 
         void bind(VkCommandBuffer commandBuffer);
-        static void defaultPipelineConfigInfo(PipelineConfigInfo& configInfo);
+        static void defaultPipelineConfigInfo(PipelineConfigInfo &configInfo);
 
     private:
-        static std::vector<char> readFile(const std::string& filePath);
+        static std::vector<char> readFile(const std::string &filePath);
         void createGraphicsPipeline(
-                const std::string& vertFilePath,
-                const std::string& fragFilePath,
-                const PipelineConfigInfo& configInfo);
+                const std::string &vertFilePath,
+                const std::string &fragFilePath,
+                const PipelineConfigInfo &configInfo);
 
         void createShaderModule(const std::vector<char> code, VkShaderModule* shaderModule);
 
-        LveDevice& lveDevice;
+        LveDevice &lveDevice;
         VkPipeline graphicsPipeline;
         VkShaderModule vertShaderModule;
         VkShaderModule fragShaderModule;
