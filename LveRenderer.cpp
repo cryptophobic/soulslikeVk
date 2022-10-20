@@ -168,5 +168,9 @@ namespace lve {
         return currentFrameIndex;
     }
 
+    float LveRenderer::getAspectRatio() const {
+        return lveSwapChain->extentAspectRatio();
+    }
+
 
 } // lve

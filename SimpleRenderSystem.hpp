@@ -1,6 +1,7 @@
 #pragma once
 
 #include "utils/FileSystemHelper.hpp"
+#include "LveCamera.hpp"
 #include "LvePipeline.hpp"
 #include "LveDevice.hpp"
 #include "LveGameObject.hpp"
@@ -17,7 +18,10 @@ namespace lve {
 
         SimpleRenderSystem(const SimpleRenderSystem&) = delete;
         SimpleRenderSystem &operator=(const SimpleRenderSystem&) = delete;
-        void renderGameObjects(VkCommandBuffer commandBuffer, std::vector<LveGameObject> &gameObjects);
+        void renderGameObjects(
+                VkCommandBuffer commandBuffer,
+                std::vector<LveGameObject> &gameObjects,
+                LveCamera &camera);
 
     private:
         void createPipelineLayout();
@@ -26,6 +30,6 @@ namespace lve {
         LveDevice &lveDevice;
 
         std::unique_ptr<LvePipeline> lvePipeline;
-        VkPipelineLayout pipelineLayout;
+        VkPipelineLayout pipelineLayout{};
     };
 }
