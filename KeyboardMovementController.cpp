@@ -5,6 +5,12 @@
 
 namespace lve {
 
+    void KeyboardMovementController::close(GLFWwindow* window) {
+        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+            glfwSetWindowShouldClose(window, 1);
+        }
+    }
+
     void KeyboardMovementController::moveInPlaneXZ(
             GLFWwindow* window, float dt, LveGameObject& gameObject) {
         glm::vec3 rotate{0};

@@ -40,6 +40,7 @@ namespace lve {
             currentTime = newTime;
 
             cameraController.moveInPlaneXZ(lveWindow.getGLFWWindow(), frameTime, viewerObject);
+            cameraController.close(lveWindow.getGLFWWindow());
             camera.setViewYXZ(viewerObject.transform.translation, viewerObject.transform.rotation);
 
             auto aspect = lveRenderer.getAspectRatio();

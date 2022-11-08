@@ -19,6 +19,7 @@ namespace lve {
             int lookDown = GLFW_KEY_DOWN;
         };
 
+        void close(GLFWwindow* window);
         void moveInPlaneXZ(GLFWwindow* window, float dt, LveGameObject& gameObject);
 
         KeyMappings keys{};
