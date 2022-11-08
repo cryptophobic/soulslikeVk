@@ -58,4 +58,8 @@ namespace lve {
         lveWindow->width = width;
         lveWindow->height = height;
     }
+
+    GLFWwindow *LveWindow::getGLFWWindow() const {
+        return window;
+    }
 }
